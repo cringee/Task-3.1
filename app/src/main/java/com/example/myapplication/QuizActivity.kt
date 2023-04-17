@@ -19,6 +19,7 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var answerRadioGroup: RadioGroup
     private lateinit var submitButton: Button
     private lateinit var progressBar: ProgressBar
+    private lateinit var progressTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,9 @@ class QuizActivity : AppCompatActivity() {
         answerRadioGroup = findViewById(R.id.answerRadioGroup)
         submitButton = findViewById(R.id.submitButton)
         progressBar = findViewById(R.id.progressBar)
+        progressTextView = findViewById(R.id.progressTextView)
+
+        nameTextView.setText(name)
 
         // Initialize the questions list
         // Question(Question, Options, Correct answer)
@@ -73,6 +77,7 @@ class QuizActivity : AppCompatActivity() {
             answerRadioGroup.addView(radioButton)
         }
         progressBar.progress = (index + 1) * 100 / questions.size
+        progressTextView.text = "Question ${index + 1}/${questions.size}"
     }
 
     private fun checkAnswer() {
